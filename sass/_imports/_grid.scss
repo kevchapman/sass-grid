@@ -1,0 +1,31 @@
+/* variables should be placed in your sass variables file */
+
+.container{
+	width: $containerWidth;
+	margin: auto;
+}
+.row{
+	@extend .clearfix;
+}
+
+/* generate the main grid ------------------------------ */
+
+@for $i from 1 through $cols{
+	$W: ($containerWidth / $cols) *$i;
+	.col-#{$i}{
+		width:$W;float:left;
+	}
+	.offset-#{$i}{
+		margin-left: $W;
+	}
+}
+
+.show-grid{
+	[class^='col-']{
+		background: #eee;
+		min-height: 100px;
+		&:nth-child(odd){
+			background: darken(#eee,10);
+		}
+	}
+}
